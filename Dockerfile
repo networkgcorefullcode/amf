@@ -18,11 +18,14 @@ RUN apt-get update && \
     libyaml-dev && \
     apt-get clean
 
+RUN sudo add-apt-repository ppa:go-task/release && \
+    sudo apt update
+
 WORKDIR $GOPATH/src/amf
 
 COPY . .
 RUN ls
-RUN make all
+RUN task build
 
 FROM alpine:3.22 AS amf
 
