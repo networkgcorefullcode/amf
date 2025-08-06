@@ -18,9 +18,7 @@ RUN apt-get update && \
     libyaml-dev && \
     apt-get clean
 
-RUN add-apt-repository ppa:go-task/release && \
-    apt update && \
-    apt install task
+RUN go install github.com/go-task/task/v3/cmd/task@latest
 
 WORKDIR $GOPATH/src/amf
 
