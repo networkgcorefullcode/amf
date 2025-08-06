@@ -21,6 +21,7 @@ RUN apt-get update && \
 WORKDIR $GOPATH/src/amf
 
 COPY . .
+RUN ls
 RUN make all
 
 FROM alpine:3.22 AS amf
