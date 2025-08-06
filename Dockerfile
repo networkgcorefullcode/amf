@@ -18,8 +18,9 @@ RUN apt-get update && \
     libyaml-dev && \
     apt-get clean
 
-RUN sudo add-apt-repository ppa:go-task/release && \
-    sudo apt update
+RUN add-apt-repository ppa:go-task/release && \
+    apt update && \
+    apt install task
 
 WORKDIR $GOPATH/src/amf
 
