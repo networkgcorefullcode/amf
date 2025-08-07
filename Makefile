@@ -9,9 +9,10 @@ PROJECT_NAME             := sdcore
 DOCKER_VERSION           ?= $(shell cat ./VERSION)
 
 ## Docker related
+DOCKER_REGISTRY          ?=
 DOCKER_REPOSITORY        ?=
 DOCKER_TAG               ?= ${DOCKER_VERSION}
-DOCKER_IMAGENAME         := ${DOCKER_REPOSITORY}${PROJECT_NAME}:amf-${DOCKER_TAG}
+DOCKER_IMAGENAME         := ${DOCKER_REGISTRY}${DOCKER_REPOSITORY}${PROJECT_NAME}:${DOCKER_TAG}
 DOCKER_BUILDKIT          ?= 1
 DOCKER_BUILD_ARGS        ?=
 
@@ -71,7 +72,7 @@ docker-build:
 	for target in $(DOCKER_TARGETS); do \
 		DOCKER_BUILDKIT=$(DOCKER_BUILDKIT) docker build  $(DOCKER_BUILD_ARGS) \
 			--target $$target \
-			--tag ${DOCKER_REPOSITORY}:amf-${DOCKER_TAG} \
+			--tag ${DOCKER_REGISTRY}${DOCKER_REPOSITORY}5gc-$$target:${DOCKER_TAG} \
 			--build-arg org_label_schema_version="${DOCKER_VERSION}" \
 			--build-arg org_label_schema_vcs_url="${DOCKER_LABEL_VCS_URL}" \
 			--build-arg org_label_schema_vcs_ref="${DOCKER_LABEL_VCS_REF}" \
@@ -84,7 +85,7 @@ docker-build:
 
 docker-push:
 	for target in $(DOCKER_TARGETS); do \
-		docker push ${DOCKER_REPOSITORY}:amf-${DOCKER_TAG}; \
+		docker push ${DOCKER_REGISTRY}${DOCKER_REPOSITORY}5gc-$$target:${DOCKER_TAG}; \
 	done
 
 .coverage:
