@@ -22,4 +22,5 @@ type NF struct {
 type FiltersParams struct {
 	SupiRangeStart string `yaml:"supiRangeStart,omitempty"`
 	SupiRangeEnd   string `yaml:"supiRangeEnd,omitempty"`
+	GroupId        string `yaml:"groupId,omitempty"`
 }
