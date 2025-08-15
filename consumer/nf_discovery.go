@@ -22,7 +22,7 @@ import (
 func SendSearchNFInstances(ctx context.Context, nrfUri string, targetNfType, requestNfType models.NfType,
 	param *Nnrf_NFDiscovery.SearchNFInstancesParamOpts,
 ) (models.SearchResult, error) {
-	if amf_context.AMF_Self().ManualConfig != nil {
+	if amf_context.AMF_Self().ManualConfig != nil && amf_context.AMF_Self().ManualConfig.Enabled {
 		// Use manual configuration
 		result, err := util.SearchNFInstancesWithManualConfig(amf_context.AMF_Self().ManualConfig, targetNfType, requestNfType, param)
 		if err == nil && len(result.NfInstances) > 0 {

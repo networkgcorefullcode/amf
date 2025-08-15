@@ -5,5 +5,6 @@ import (
 )
 
 type ManualConfig struct {
-	NFs map[models.NfType][]models.NfProfile `yaml:"nfs,omitempty"` // Map of NF types to their configurations
+	NFs     map[models.NfType][]models.NfProfile `yaml:"nfs,omitempty"` // Map of NF types to their configurations
+	Enabled bool                                 `yaml:"enabled,omitempty"`
 }
