@@ -91,7 +91,7 @@ type Configuration struct {
 	DebugProfilePort         int       `yaml:"debugProfilePort,omitempty"`
 
 	// Manual Configuration to connect with network functions
-	ManualConfigs []ManualConfig `yaml:"manualConfigs,omitempty"`
+	ManualConfigs *ManualConfig `yaml:"manualConfigs,omitempty"`
 }
 
 func (c *Configuration) Get5gsNwFeatSuppEnable() bool {
