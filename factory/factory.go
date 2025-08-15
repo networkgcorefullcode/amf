@@ -64,11 +64,9 @@ func InitConfigFactory(f string) error {
 
 	if AmfConfig.Configuration.ManualConfigs != nil {
 		logger.CfgLog.Infof("Manual Configuration provided for network functions")
-		for _, manualConfig := range AmfConfig.Configuration.ManualConfigs {
-			for nfType, nfs := range manualConfig.NFs {
-				for _, nf := range nfs {
-					logger.CfgLog.Debugf("Manual Configuration - NF Type: %s, Name: %s, URL: %s, Port: %d", nfType, nf.Name, nf.URL, nf.Port)
-				}
+		for nfType, nfs := range AmfConfig.Configuration.ManualConfigs.NFs {
+			for _, nf := range nfs {
+				logger.CfgLog.Debugf("Manual Configuration - NF Type: %s, Name: %s, URL: %s, Port: %d", nfType, nf.NfInstanceName, nf.NfServices)
 			}
 		}
 	} else {

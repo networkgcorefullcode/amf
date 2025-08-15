@@ -126,6 +126,8 @@ func InitAmfContext(amfContext *context.AMFContext) {
 			amfContext.NrfCacheEvictionInterval = time.Duration(configuration.NrfCacheEvictionInterval)
 		}
 	}
+
+	amfContext.ManualConfig = configuration.ManualConfigs
 }
 
 func getIntAlgOrder(integrityOrder []string) (intOrder []uint8) {

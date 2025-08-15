@@ -98,6 +98,8 @@ type AMFContext struct {
 	EnableDbStore            bool
 	EnableNrfCaching         bool
 	NrfCacheEvictionInterval time.Duration
+
+	ManualConfig *factory.ManualConfig
 }
 
 type AMFContextEventSubscription struct {
