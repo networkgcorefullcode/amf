@@ -89,6 +89,9 @@ type Configuration struct {
 	NrfCacheEvictionInterval int       `yaml:"nrfCacheEvictionInterval,omitempty"`
 	KafkaInfo                KafkaInfo `yaml:"kafkaInfo,omitempty"`
 	DebugProfilePort         int       `yaml:"debugProfilePort,omitempty"`
+
+	// Manual Configuration to connect with network functions
+	ManualConfigs []ManualConfig `yaml:"manualConfigs,omitempty"`
 }
 
 func (c *Configuration) Get5gsNwFeatSuppEnable() bool {
