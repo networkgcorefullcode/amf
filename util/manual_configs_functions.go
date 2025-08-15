@@ -102,6 +102,6 @@ func filterNfInstancesBySupi(nfInstances []models.NfProfile, supi string) []mode
 }
 
 func filterBySupi(start, end, supi string) bool {
-	// Compara los valores como strings lexicográficamente
+	// Compare the values as strings lexicographically
 	return supi >= start && supi <= end
 }
