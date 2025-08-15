@@ -59,6 +59,21 @@ func InitConfigFactory(f string) error {
 		return err
 	}
 	err = validateAmfId(AmfConfig.Configuration.AmfId)
+
+	// Checking manual configuration
+
+	if AmfConfig.Configuration.ManualConfigs != nil {
+		logger.CfgLog.Infof("Manual Configuration provided for network functions")
+		for _, manualConfig := range AmfConfig.Configuration.ManualConfigs {
+			for nfType, nfs := range manualConfig.NFs {
+				for _, nf := range nfs {
+					logger.CfgLog.Debugf("Manual Configuration - NF Type: %s, Name: %s, URL: %s, Port: %d", nfType, nf.Name, nf.URL, nf.Port)
+				}
+			}
+		}
+	} else {
+		logger.CfgLog.Infof("No manual configuration provided for network functions")
+	}
 	return err
 }
 
