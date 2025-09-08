@@ -66,7 +66,7 @@ func InitAmfContext(amfContext *context.AMFContext) {
 	amfContext.SBIPort = factory.AMF_DEFAULT_PORT_INT  // default port
 	if sbi != nil {
 		if sbi.RegisterIPv4 != "" {
-			amfContext.RegisterIPv4 = os.Getenv("POD_IP")
+			amfContext.RegisterIPv4 = sbi.RegisterIPv4
 		}
 		if sbi.Port != 0 {
 			amfContext.SBIPort = sbi.Port
