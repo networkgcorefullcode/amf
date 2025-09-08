@@ -80,6 +80,7 @@ var registerNF = func(registerCtx context.Context, newAccessAndMobilityConfig []
 			nfProfile, _, err := consumer.SendRegisterNFInstance(registerCtx, newAccessAndMobilityConfig)
 			if err != nil {
 				logger.NrfRegistrationLog.Errorf("register AMF instance to NRF failed. Will retry in %s", retryTime.String())
+				logger.NrfRegistrationLog.Errorf("the error is %s", err)
 				interval = retryTime
 				continue
 			}
