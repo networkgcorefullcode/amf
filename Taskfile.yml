@@ -55,6 +55,14 @@ vars:
     sh: git log --pretty="%ai" -1 2>/dev/null | awk '{time=$1"T"$2"Z"; print time}' || echo "unknown"
 
 tasks:
+  # download dependencies
+  mod-start:
+    desc: "execute go mod download to performance the docker build step"
+    aliases: [mod]
+    cmds:
+      - cd {{.GO_SRC_PATH}}
+      - go mod download
+
   # Build Go binary
   build:
     desc: "Build AMF binary"

@@ -22,8 +22,15 @@ RUN go install github.com/go-task/task/v3/cmd/task@latest
 
 WORKDIR $GOPATH/src/amf
 
+# copy go.mod and go.sum for cache
+
+COPY go.mod .
+COPY go.sum .
+
+RUN task mod-start
+
 COPY . .
-RUN ls
+
 RUN task build
 
 FROM alpine:3.22 AS amf
