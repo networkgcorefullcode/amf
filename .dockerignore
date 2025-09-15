@@ -1,2 +1,5 @@
 .gitlab-ci.yml
+.gitignore
 README.md
+NOTICE.txt
+test-mirror.txt

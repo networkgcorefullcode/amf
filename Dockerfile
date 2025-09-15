@@ -26,6 +26,7 @@ WORKDIR $GOPATH/src/amf
 
 COPY go.mod .
 COPY go.sum .
+COPY Taskfile.yml .
 
 RUN task mod-start
 
