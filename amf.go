@@ -21,6 +21,7 @@ import (
 var AMF = &service.AMF{}
 
 func main() {
+	logger.AppLog.Infoln("AMF is starting wait some seconds while the configs are loading")
 	app := &cli.Command{}
 	app.Name = "amf"
 	logger.AppLog.Infoln(app.Name)
