@@ -111,8 +111,7 @@ tasks:
           --build-arg org_label_schema_build_date="{{.DOCKER_LABEL_BUILD_DATE}}" \
           --build-arg org_opencord_vcs_commit_date="{{.DOCKER_LABEL_COMMIT_DATE}}" \
           --build-arg PATH_BINARY="{{.GO_BIN_PATH}}/{{.GO_NF}}" \
-          --file="Dockerfile.fast"
-          .
+          --file="Dockerfile.fast" .
       - rm -rf vendor
 
   # Docker push
