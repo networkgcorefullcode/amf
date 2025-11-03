@@ -180,7 +180,7 @@ To build the container image:
 
 ```bash
 task mod-start
-task webconsole-ui
+task build
 task docker-build-fast
 ```
 
