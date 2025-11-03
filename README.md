@@ -19,7 +19,7 @@ Below is a high-level view of the repository and its main components:
 
 ```
 .
-├── amf.go
+├── amf.go                      # Main entry point for the AMF service
 ├── amfTest                     # Example test configurations for AMF setup and behavior
 │   ├── amfcfg_with_custom_webui_url.yaml
 │   └── amfcfg.yaml
