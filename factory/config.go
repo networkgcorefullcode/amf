@@ -92,6 +92,7 @@ type Configuration struct {
 
 	// Manual Configuration to connect with network functions
 	ManualConfigs *ManualConfig `yaml:"manualConfigs,omitempty"`
+	MetricsPort   string        `yaml:"metricsPort,omitempty"`
 }
 
 func (c *Configuration) Get5gsNwFeatSuppEnable() bool {
