@@ -26,12 +26,12 @@ configuration:
     tls: # the local path of TLS key
       key: /support/TLS/amf.pem # AMF TLS Certificate
       pem: /support/TLS/amf.pem # AMF TLS Private key
-  serviceNameList: # the SBI services provided by this AMF, refer to TS 29.518
-    - namf-comm # Namf_Communication service
-    - namf-evts # Namf_EventExposure service
-    - namf-mt   # Namf_MT service
-    - namf-loc  # Namf_Location service
-    - namf-oam  # OAM service
+  serviceNameList:
+    - namf-comm
+    - namf-evts
+    - namf-mt
+    - namf-loc
+    - namf-oam
   supportDnnList:  # the DNN (Data Network Name) list supported by this AMF
     - internet
   metricsPort: ":9102"
