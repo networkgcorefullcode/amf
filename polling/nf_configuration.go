@@ -7,6 +7,7 @@ package polling
 
 import (
 	"context"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -37,7 +38,12 @@ type nfConfigPoller struct {
 func StartPollingService(ctx context.Context, webuiUri string, registrationChannel, contextUpdateChannel chan []nfConfigApi.AccessAndMobility) {
 	poller := nfConfigPoller{
 		currentAccessAndMobilityConfig: []nfConfigApi.AccessAndMobility{},
-		client:                         &http.Client{Timeout: initialPollingInterval},
+		client: &http.Client{
+			Timeout: initialPollingInterval,
+			Transport: &http.Transport{
+				TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+			},
+		},
 	}
 	interval := initialPollingInterval
 	pollingEndpoint := webuiUri + pollingPath
