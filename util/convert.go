@@ -78,3 +78,22 @@ func AnTypeToNas(anType models.AccessType) uint8 {
 
 	return nasMessage.AccessTypeBoth
 }
+
+func SeparateAmfId(amfid string) (regionId, setId, ptrId string, err error) {
+	if len(amfid) != 6 {
+		err = fmt.Errorf("len of amfId[%s] != 6", amfid)
+		return
+	}
+	// regionId: 16bits, setId: 10bits, ptrId: 6bits
+	regionId = amfid[:2]
+	byteArray, err1 := hex.DecodeString(amfid[2:])
+	if err1 != nil {
+		err = err1
+		return
+	}
+	byteSetId := []byte{byteArray[0] >> 6, byteArray[0]<<2 | byteArray[1]>>6}
+	setId = hex.EncodeToString(byteSetId)[1:]
+	bytePtrId := []byte{byteArray[1] & 0x3f}
+	ptrId = hex.EncodeToString(bytePtrId)
+	return
+}

@@ -4,6 +4,7 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 //
+// testing the pipeline !!!!
 
 package main
 
@@ -20,6 +21,7 @@ import (
 var AMF = &service.AMF{}
 
 func main() {
+	logger.AppLog.Infoln("AMF is starting wait some seconds while the configs are loading")
 	app := &cli.Command{}
 	app.Name = "amf"
 	logger.AppLog.Infoln(app.Name)
@@ -37,8 +39,6 @@ func action(ctx context.Context, c *cli.Command) error {
 		logger.CfgLog.Errorf("%+v", err)
 		return fmt.Errorf("failed to initialize")
 	}
-
-	AMF.WatchConfig()
 
 	AMF.Start()
 

@@ -14,6 +14,7 @@ package metrics
 import (
 	"net/http"
 
+	"github.com/omec-project/amf/factory"
 	"github.com/omec-project/amf/logger"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -64,7 +65,7 @@ func init() {
 // InitMetrics initialises AMF stats
 func InitMetrics() {
 	http.Handle("/metrics", promhttp.Handler())
-	if err := http.ListenAndServe(":9089", nil); err != nil {
+	if err := http.ListenAndServe(factory.AmfConfig.Configuration.MetricsPort, nil); err != nil {
 		logger.InitLog.Errorf("could not open metrics port: %v", err)
 	}
 }
