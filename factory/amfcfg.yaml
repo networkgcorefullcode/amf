@@ -45,7 +45,7 @@ configuration:
     enableKafka: true
     brokerUri: localhost
     brokerPort: 9092
-    topicName: sdcore-amf-events
+    topicName: sdcore-data-source-amf
   debugProfilePort: 5555 # Debug profile port for pprof
   security:  # NAS security parameters
     integrityOrder: # the priority of integrity algorithms
